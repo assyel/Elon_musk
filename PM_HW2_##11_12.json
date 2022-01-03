@@ -1,0 +1,483 @@
+{
+	"info": {
+		"_postman_id": "ac6e84fe-a319-40ca-9379-73aca1f8636d",
+		"name": "december21",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "second",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "162.55.220.72:5005/",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_method",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/get_method?name=Assyelle&age=35",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"get_method"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Assyelle"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// http://162.55.220.72:5005/user_info_3",
+							"",
+							"//2. Статус код 200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//3. Спарсить response body в json.",
+							"pm.test(\"parse response body json\", function () {",
+							"    let post_form_data = pm.response.json();",
+							"});",
+							"",
+							"//4. Проверить, что name в ответе равно name s request(name вбить руками.)",
+							"pm.test(\"Your name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"Assyelle\");",
+							"});",
+							"",
+							"//5. Проверить, что age в ответе равно age s request (age вбить руками.)",
+							"pm.test(\"Your age\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.age).to.eql(\"35\");",
+							"});",
+							"",
+							"//6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)",
+							"pm.test(\"Your salary\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var salary = request.data;",
+							"    pm.expect(jsonData.salary).to.eql(10000);",
+							"    console.log(\"test === \" +  jsonData.salary);",
+							"});",
+							"",
+							"//7. Спарсить request.",
+							"pm.test(\"parse request\", function () {",
+							"    let post_form_data = request.data;",
+							"});",
+							"",
+							"//8. Проверить, что name в ответе равно name s request (name забрать из request.)",
+							"pm.test(\"check name from request\", function () {",
+							"    var req_data = request.data;",
+							"    console.log(\"testik ===== \" + req_data.name);",
+							"    //pm.expect(responseData.name).to.eql(requestData.name);   ",
+							"});",
+							"",
+							"//9. Проверить, что age в ответе равно age s request (age забрать из request.)",
+							"pm.test(\"check age from request\", function () {",
+							"    var req_data = request.data;",
+							"    console.log(\"testik ===== \" + req_data.age);",
+							"});",
+							"",
+							"//10. Проверить, что salary в ответе равно salary s request (salary забрать из request.)",
+							"pm.test(\"check salary from request\", function () {",
+							"    var req_data = request.data;",
+							"    //console.log(\"testik ===== \" + req_data.salary);",
+							"});",
+							"",
+							"// 11. Вывести в консоль параметр family из response.",
+							"",
+							"    //console.log(\"found === \" + family);",
+							"var responseJson = pm.response.json();",
+							"var req_data = request.data;",
+							"//var resp_data = JSON.parse(responseBody).u_salary_1_5_year;",
+							"",
+							"//12. Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)",
+							"pm.test(\"check salary_1_5_year in response\", function () {",
+							"    ",
+							"    pm.expect(responseJson.u_salary_1_5_year).to.eql(req_data.salary * 4);",
+							"    ",
+							"});",
+							" console.log(\"pushka  ======\" + req_data.salary * 4);",
+							" //console.log(\"pushka2 ======\" + u_salary_1_5_year);",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Assyelle",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "10000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_1?name=Assyelle&age=35&weight=48",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Assyelle"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						},
+						{
+							"key": "weight",
+							"value": "48"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_2?name=Assyelle&age=35&salary=10000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Assyelle"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						},
+						{
+							"key": "salary",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"parse response body json\", function () {",
+							"    let post_form_data = pm.response.json();",
+							"});",
+							"",
+							"pm.test(\"parse request\", function () {",
+							"    let get_params = pm.request.url.query.toObject()",
+							"});",
+							"",
+							"pm.test(\"request name\", function () {",
+							"    let get_params.name = pm.request.url.query.toObject(\"name=Alex\")",
+							"",
+							"",
+							"//pm.test(\"name request\", function () {",
+							"    //let name = request.data.Alex;",
+							"//});",
+							"",
+							"//pm.test(\"name request 3\", function () {",
+							"   // let name = JSON.parse(request.data);",
+							"    //let name = request.data.Assyelle;",
+							"//console.log(\"test ===\" + name.age);",
+							"//});",
+							"",
+							"",
+							"//pm.test(\"age request\", function () {",
+							"    //let get_params_Alex_age = request.data.age=24;",
+							"    //let qa_salary_after_6_months = request.data.salary * 2;",
+							"//});",
+							"",
+							"//pm.test(\"salary request\", function () {",
+							"    //let get_params_salary = request.data.salary= 10000;",
+							"    //let qa_salary_after_6_months = request.data.salary * 2;",
+							"//});",
+							"",
+							"",
+							"",
+							"//Вывести в консоль параметр family из response",
+							"",
+							"//pm.test(\"u_salary_1_5_year\", function () {",
+							"    //let u_salary_1_5_year = request.data.salary * 4;",
+							"    //let qa_salary_after_6_months = request.data.salary * 2;",
+							"//});",
+							"",
+							"//pm.test(\"hugou\", function () {",
+							"//let salary = JSON.parse(request.data);",
+							"    //pm.expect(salary * 4).to.eql(pm.response.json().person.u_salary_1_5_year);",
+							"//console.log(\"test ===\" + salary.salary);",
+							"//});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_3?name=Assyelle&age=35&salary=10000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Assyelle"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						},
+						{
+							"key": "salary",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_info_4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Assyelle&age=35&salary=10000",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Assyelle"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						},
+						{
+							"key": "salary",
+							"value": "10000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Assyelle",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "10000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Assyelle",
+							"disabled": true
+						},
+						{
+							"key": "age",
+							"value": "35",
+							"disabled": true
+						},
+						{
+							"key": "salary",
+							"value": "10000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
